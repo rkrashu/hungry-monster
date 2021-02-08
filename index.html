@@ -1,47 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hungry Monster</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body><div>
-    <input type="text" id=input>
-    <button id=btn>Search</button>
+
+<body>
+
+         <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">Hungry Monster</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto ">
+              <li class="nav-item me-5">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item me-5">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item me-5">
+                <a class="nav-link" href="#">Recipes</a>
+              </li>
+              <li class="nav-item me-5">
+                <a class="nav-link" href="#">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End of navbar -->
+      <br>
+      <!-- Search Btn -->
+      <div id= searchArea class="text-center">
+        <input type="text" id= "inputText" placeholder="Search Food">
+        <button id = "searchBtn">Search</button>
+      </div>
+      <br><br>
+      <!-- food container -->
+      <section class="container" id="foodsContainer">
+
+
+      </section>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Food Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id=foodsDetails>
+        </div>
+      </div>
     </div>
+  </div>
 
 
 
-    <div id=food>
 
-    </div>
-    
+      
+
+   
 
 
-    <script>
-        document.getElementById("btn").addEventListener("click",function(){
-            const input = document.getElementById("input").value
-            fetch("https://www.themealdb.com/api/json/v1/1/search.php?f="+input+"")
-            .then(res => res.json())
-            .then(data =>{
-                console.log(data.meals)
-                const food = data.meals.map(item=> {
-                    return`
-                    <div class= container>
-                    <div>
-                        <img src=${item.strMealThumb}>
-                        </div>
-                        <div>
-                        <h1> ${item.strMeal}</h1>
-                        </div>
-                        </div>`
-                }).join(" ")
-                document.getElementById("food").insertAdjacentHTML("afterbegin", food)
-            })
-            document.getElementById("input").value = " "
-            })
-    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="myScript.js"></script>
 </body>
+
 </html>
